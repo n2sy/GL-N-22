@@ -1,0 +1,9 @@
+<p>Je suis le {{ prenom }} {{ club}}</p>
+
+<input [(ngModel)]="club" type="text" class="form-control">
+
+<div [hidden]="hd" [style.backgroundColor]="bg">Cours d'Angular</div>
+
+<button (click)="showAlert()" class="btn btn-primary">Click me</button>
+
+<app-second (msgToFirst2)="traitement2($event)" (msgToFirst)="traitementDuParent($event)" [cl]="bg"></app-second>
