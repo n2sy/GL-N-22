@@ -32,9 +32,20 @@ export class ManageServersComponent implements OnInit {
       date_d: new Date(2020, 3, 14),
     },
   ];
+
+  selectedStatut = '';
   constructor() {}
 
   ngOnInit(): void {}
+
+  addServer() {
+    this.listServers.push({
+      nom: 'NEW SERVER',
+      type: 'large',
+      statut: 'stable',
+      date_d: new Date(2020, 3, 14),
+    });
+  }
 
   affecterClass(st) {
     return {
