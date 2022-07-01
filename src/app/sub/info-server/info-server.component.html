@@ -1,0 +1,9 @@
+<div class="container">
+    <strong> {{ oneServer.nom }} </strong>
+    <br>
+    <p>Le statut du serveur est {{ oneServer.statut }} </p>
+    <br>
+    <button [routerLink]="['edit']" [disabled]="showButton" class="btn btn-info">Editer</button>
+
+    <br><i *ngIf="showButton">Impossible d'editer ce serveur</i>
+</div>

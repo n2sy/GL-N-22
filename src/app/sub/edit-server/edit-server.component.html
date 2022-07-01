@@ -1,0 +1,10 @@
+<div class="container">
+    <label for="">Nom du serveur </label>
+    <input [(ngModel)]="editedServer.nom" type="text" class="form-control">
+    <label for="">Statut du serveur</label>
+    <select class="form-control" [(ngModel)]="editedServer.statut">
+        <option value="online">online</option>
+        <option value="offline">offline</option>
+    </select>
+    <button routerLink="/list-servers" class="btn btn-primary">Valider</button>
+</div>

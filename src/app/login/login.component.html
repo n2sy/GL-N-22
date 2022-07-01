@@ -1,0 +1,26 @@
+<form #f="ngForm" (ngSubmit)="submitHandler(f)">
+    <label for="nidhal">Adresse mail</label>
+    <input id="nidhal" #login="ngModel" ngModel required email type="text" class="form-control" name="login">
+
+    <div *ngIf="login.invalid && login.touched" class="alert alert-danger">Ce champ est required et est une adresse mail
+    </div>
+    <label for="">Mot de passe</label>
+    <input ngModel name="password" type="text" class="form-control">
+
+    <label for="section">Section</label>
+    <select class="form-control" [ngModel]="defaultSection" name="section" id="section">
+        <option value="gl">Génie Logiciel</option>
+        <option value="dsen">Data Science</option>
+        <option value="dmwm">Web et Mobile</option>
+    </select>
+
+    <label>Commentaire</label>
+    <textarea class="form-control" [(ngModel)]="myCommentaire" name="mycomment" rows="4"></textarea>
+
+    {{myCommentaire}}
+    <button [disabled]="f.invalid" class="btn btn-primary">Se connecter</button>
+
+    <pre>
+        {{ f.value | json }}
+    </pre>
+</form>
