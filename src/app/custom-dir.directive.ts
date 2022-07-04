@@ -4,8 +4,8 @@ import { Directive, HostBinding, HostListener } from '@angular/core';
   selector: '[appCustomDir]',
 })
 export class CustomDirDirective {
-  @HostBinding('style.backgroundColor') bgColor = 'pink';
-  @HostBinding('style.color') cl = 'blue';
+  @HostBinding('style.backgroundColor') bgColor = 'white';
+  @HostBinding('style.color') cl = 'black';
 
   constructor() {}
 

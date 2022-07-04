@@ -1,4 +1,16 @@
 <form #f="ngForm" (ngSubmit)="submitHandler(f)">
+
+    <label for="">Exemple gestion erreur</label>
+    <input ngModel #exp="ngModel" name="exemple" type="text" required minlength="4" pattern="nidhal"
+        class="form-control">
+    <div *ngIf="exp.invalid && exp.touched" class="alert alert-danger">
+        <p *ngIf="exp.errors['required']">Ce champ est obligatoire</p>
+        <p *ngIf="exp.errors['minlength']">Le nombre de caractères minimum est 4</p>
+        <p *ngIf="exp.errors['pattern']">Le pattern est "nidhal"</p>
+
+    </div>
+
+
     <label for="nidhal">Adresse mail</label>
     <input id="nidhal" #login="ngModel" ngModel required email type="text" class="form-control" name="login">
 
@@ -19,6 +31,9 @@
 
     {{myCommentaire}}
     <button [disabled]="f.invalid" class="btn btn-primary">Se connecter</button>
+    <button (click)="randomPwd(f)" class="btn btn-info">Random Pwd</button>
+    <button (click)="randomPwd2(f)" class="btn btn-danger">Random Pwd II</button>
+    <button (click)="reset(f)" class="btn btn-success">Reset</button>
 
     <pre>
         {{ f.value | json }}
