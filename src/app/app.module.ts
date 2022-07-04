@@ -26,6 +26,7 @@ import { UpdateComponent } from './update/update.component';
 import { NotFoudnComponent } from './not-foudn/not-foudn.component';
 import { SubModule } from './sub/sub.module';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,13 @@ import { LoginComponent } from './login/login.component';
     NotFoudnComponent,
     LoginComponent,
   ],
-  imports: [BrowserModule, FormsModule, GL_N_ROUTING, SubModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    GL_N_ROUTING,
+    SubModule,
+    HttpClientModule,
+  ],
 
   providers: [FirstService],
   bootstrap: [AppComponent],

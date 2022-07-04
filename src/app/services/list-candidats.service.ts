@@ -16,9 +16,22 @@ export class ListCandidatsService {
     return this.listCandidats;
   }
 
-  addCandidat() {
-    this.listCandidats.push(
-      new Candidat(3, 'New', 'Candidat', 56, 'Enseignant', 'homer.jpg')
-    );
+  addCandidat(newC) {
+    newC._id = this.listCandidats[this.listCandidats.length - 1]._id + 1;
+    this.listCandidats.push(newC);
+  }
+
+  getCandidatById(id) {
+    return this.listCandidats.find((c) => c._id == id);
+  }
+
+  deleteCandidat(cand) {
+    let i = this.listCandidats.indexOf(cand);
+    this.listCandidats.splice(i, 1);
+  }
+
+  updateCandidat(uCand) {
+    let i = this.listCandidats.indexOf(uCand);
+    this.listCandidats[i] = uCand;
   }
 }

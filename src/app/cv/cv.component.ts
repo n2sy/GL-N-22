@@ -32,7 +32,7 @@ export class CvComponent implements OnInit {
   }
 
   addNewCandidat() {
-    this.listCand.addCandidat();
+    // this.listCand.addCandidat();
   }
 
   showCandidat() {

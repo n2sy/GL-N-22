@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -9,9 +10,21 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   defaultSection = 'dsen';
   myCommentaire = 'Rien à signaler...';
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.http.get('https://jsonpllllaceholder.typicode.com/users').subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => {
+        console.log('Flux terminé !');
+      },
+    });
+  }
 
   submitHandler(f) {
     console.log(f);
