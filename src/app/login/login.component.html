@@ -1,6 +1,6 @@
 <form #f="ngForm" (ngSubmit)="submitHandler(f)">
 
-    <label for="">Exemple gestion erreur</label>
+    <!-- <label for="">Exemple gestion erreur</label>
     <input ngModel #exp="ngModel" name="exemple" type="text" required minlength="4" pattern="nidhal"
         class="form-control">
     <div *ngIf="exp.invalid && exp.touched" class="alert alert-danger">
@@ -8,18 +8,21 @@
         <p *ngIf="exp.errors['minlength']">Le nombre de caractères minimum est 4</p>
         <p *ngIf="exp.errors['pattern']">Le pattern est "nidhal"</p>
 
-    </div>
+    </div> -->
 
+    <div *ngIf="showError" class="alert alert-danger">Adresse-mail et/ou mot de passe incorrects</div>
+    <hr>
 
     <label for="nidhal">Adresse mail</label>
-    <input id="nidhal" #login="ngModel" ngModel required email type="text" class="form-control" name="login">
+    <input id="nidhal" #login="ngModel" ngModel required email type="text" class="form-control" name="email">
 
-    <div *ngIf="login.invalid && login.touched" class="alert alert-danger">Ce champ est required et est une adresse mail
+    <div *ngIf="login.invalid && login.touched" class="alert alert-danger">Ce champ est required et est une adresse
+        mail
     </div>
     <label for="">Mot de passe</label>
     <input ngModel name="password" type="text" class="form-control">
 
-    <label for="section">Section</label>
+    <!-- <label for="section">Section</label>
     <select class="form-control" [ngModel]="defaultSection" name="section" id="section">
         <option value="gl">Génie Logiciel</option>
         <option value="dsen">Data Science</option>
@@ -29,13 +32,13 @@
     <label>Commentaire</label>
     <textarea class="form-control" [(ngModel)]="myCommentaire" name="mycomment" rows="4"></textarea>
 
-    {{myCommentaire}}
+    {{myCommentaire}} -->
     <button [disabled]="f.invalid" class="btn btn-primary">Se connecter</button>
-    <button (click)="randomPwd(f)" class="btn btn-info">Random Pwd</button>
+    <!-- <button (click)="randomPwd(f)" class="btn btn-info">Random Pwd</button>
     <button (click)="randomPwd2(f)" class="btn btn-danger">Random Pwd II</button>
     <button (click)="reset(f)" class="btn btn-success">Reset</button>
 
     <pre>
         {{ f.value | json }}
-    </pre>
+    </pre> -->
 </form>

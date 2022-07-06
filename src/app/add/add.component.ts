@@ -13,7 +13,11 @@ export class AddComponent implements OnInit {
   ngOnInit(): void {}
 
   addHandler(newCand) {
-    this.candSer.addCandidat(newCand);
-    this.router.navigateByUrl('/cv');
+    this.candSer.addCandidatAPI(newCand).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+    });
   }
 }

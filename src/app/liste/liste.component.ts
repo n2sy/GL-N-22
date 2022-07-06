@@ -7,13 +7,11 @@ import { ListCandidatsService } from '../services/list-candidats.service';
   styleUrls: ['./liste.component.css'],
 })
 export class ListeComponent implements OnInit {
-  tabCandidat = [];
+  @Input() tabCandidat = [];
   @Output() msgToCv = new EventEmitter();
   constructor(private listCand: ListCandidatsService) {}
 
-  ngOnInit(): void {
-    this.tabCandidat = this.listCand.getAllCandidats();
-  }
+  ngOnInit(): void {}
 
   traitementDuListe(cand) {
     this.msgToCv.emit(cand);

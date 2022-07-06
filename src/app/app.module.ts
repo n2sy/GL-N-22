@@ -27,6 +27,7 @@ import { NotFoudnComponent } from './not-foudn/not-foudn.component';
 import { SubModule } from './sub/sub.module';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorProvider } from './add-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
 
-  providers: [FirstService],
+  providers: [FirstService, TokenInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

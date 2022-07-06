@@ -18,13 +18,27 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.updatedCandidat = this.candSer.getCandidatById(p.get('id'));
+        this.candSer.getCandidatByIdAPI(p.get('id')).subscribe({
+          next: (reponse) => {
+            this.updatedCandidat = reponse;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       },
     });
   }
 
   updateHandler() {
-    this.candSer.updateCandidat(this.updatedCandidat);
-    this.router.navigateByUrl('/cv');
+    this.candSer.updateCandidatAPI(this.updatedCandidat).subscribe({
+      next: (response) => {
+        alert(response['message']);
+        this.router.navigateByUrl('/cv');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 }

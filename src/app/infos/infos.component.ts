@@ -23,7 +23,14 @@ export class InfosComponent implements OnInit {
     //v2 avec paramMap
     this.activatedRoute.paramMap.subscribe({
       next: (p: ParamMap) => {
-        this.selectedCandidat = this.candSer.getCandidatById(p.get('id'));
+        this.candSer.getCandidatByIdAPI(p.get('id')).subscribe({
+          next: (response) => {
+            this.selectedCandidat = response;
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
       },
       // error : () => {
 
@@ -36,8 +43,12 @@ export class InfosComponent implements OnInit {
 
   deleteHandler() {
     if (confirm('Etes-vous sûr de vouloir supprimer cette personne ? ')) {
-      this.candSer.deleteCandidat(this.selectedCandidat);
-      this.router.navigateByUrl('/cv');
+      this.candSer.deleteCandidatAPI(this.selectedCandidat['_id']).subscribe({
+        next: (response) => {
+          alert(response['message']);
+          this.router.navigateByUrl('/cv');
+        },
+      });
     }
   }
 }
